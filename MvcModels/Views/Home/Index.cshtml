@@ -4,9 +4,26 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Person</h2>
-<div><label>ID:</label>@Html.DisplayFor(p=>p.PersonId)</div>
-<div><label>First Name:</label>@Html.DisplayFor(p=>p.FirstName)</div>
-<div><label>Last Name:</label>@Html.DisplayFor(p=>p.LastName)</div>
-<div><label>Role:</label>@Html.DisplayFor(p=>p.Role)</div>
+<div class="container-fluid">
+    <div class="row">
+        <header class="col-md-offset-4 col-md-8">
+            <h2>Person</h2>
+        </header>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div><label>ID:</label>@Html.DisplayFor(p => p.PersonId)</div>
+            <div><label>First Name:</label>@Html.DisplayFor(p => p.FirstName)</div>
+            <div><label>Last Name:</label>@Html.DisplayFor(p => p.LastName)</div>
+            <div><label>Role:</label>@Html.DisplayFor(p => p.Role)</div>
+        </div>
+        <div class="col-md-6">
+            <div><label>City:</label>@Html.DisplayFor(p => p.HomeAddress.City)</div>
+            <div><label>Country:</label>@Html.DisplayFor(p => p.HomeAddress.Country)</div>
+        </div>
+    </div>
+</div>
 
