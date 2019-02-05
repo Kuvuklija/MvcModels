@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 using MvcModels.Models;
 using System.Linq;
+using System.Collections.Generic;
+using System;
 
 namespace MvcModels.Controllers
 {
@@ -31,9 +33,40 @@ namespace MvcModels.Controllers
             return View(summary);
         }
 
-        public ActionResult Names(string[] names) {
-            names = names ?? new string[0];
+        //get and post here
+        public ActionResult Names(IList<string> names) {
+            //names = names ?? new string[0];
+            names = names ?? new List<string>();
             return View(names);
+        }
+
+        //custom class
+        //public ActionResult Address(IList<AddressSummary> addresses) {
+        //    addresses = addresses ?? new List<AddressSummary>();
+        //    return View(addresses);
+        //}
+
+        //manually model binding
+        public ActionResult Address(FormCollection formData) {
+            IList<AddressSummary> addresses = new List<AddressSummary>();
+
+            //1 var
+            //UpdateModel(addresses, new FormValueProvider(ControllerContext)); //restrict source of data
+            //try{
+            //    UpdateModel(addresses, formData); //before using parameter "formData"
+            //} catch(InvalidOperationException ex) {
+            //    //provide feedback to user
+            //}
+
+            //2 var
+            //if (TryUpdateModel(addresses, formData)){
+            //    //procced as normal
+            //} else {
+            //    //provide feedback to user
+            //}
+
+            UpdateModel(addresses); //manually populating instance of addresses
+            return View(addresses);
         }
     }
 }

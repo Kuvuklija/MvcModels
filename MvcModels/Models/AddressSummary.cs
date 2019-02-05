@@ -1,7 +1,9 @@
 ﻿using System.Web.Mvc;
+using MvcModels.Infrastucture;
 
 namespace MvcModels.Models{
-    [Bind(Include ="City")]
+    //[Bind(Include ="City")]
+    [ModelBinder(typeof(AddressSummaryBinder))]
     public class AddressSummary{
         public string City { get; set; }    
         public string Country { get; set; }
